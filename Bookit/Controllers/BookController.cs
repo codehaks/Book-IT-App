@@ -31,6 +31,13 @@ namespace Bookit.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
+        public IActionResult More(int id)
+        {
+            var model = _db.Books.Find(id);
+            return View(model);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {

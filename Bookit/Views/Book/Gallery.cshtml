@@ -19,6 +19,9 @@
             <p>Year : @book.Year</p>
             <p>Pages : @book.Pages</p>
             <p>Price : @book.Price</p>
+            <p>
+                <a asp-action="more" asp-route-id="@book.Id" asp-controller="book" asp-area="" class="btn btn-primary">More...</a>
+            </p>
         </div>
     </div>
     <hr />
