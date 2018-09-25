@@ -35,5 +35,11 @@ namespace Bookit.Controllers
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Details(int id)
+        {
+            var model = _db.Books.Find(id);
+            return View(model);
+        }
     }
 }
