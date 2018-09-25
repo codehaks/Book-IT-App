@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bookit.Data;
 using Bookit.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookit.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class BookController : Controller
     {
         private readonly ApplicationDbContext _db;
