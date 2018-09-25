@@ -21,6 +21,7 @@
             <p>Price : @book.Price</p>
             <p>
                 <a asp-action="more" asp-route-id="@book.Id" asp-controller="book" asp-area="" class="btn btn-primary">More...</a>
+                <a asp-action="create" asp-route-bookid="@book.Id" asp-controller="order" asp-area="" class="btn btn-success" style="width:200px"> Order now</a>
             </p>
         </div>
     </div>
