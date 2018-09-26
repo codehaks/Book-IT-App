@@ -72,7 +72,7 @@ namespace Bookit.Controllers
 
                 _context.Add(order);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View("Receipt", order);
             }
             return View(order);
         }
