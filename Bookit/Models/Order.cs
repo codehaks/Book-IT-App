@@ -19,7 +19,9 @@ namespace Bookit.Models
         [Required]
         public string PostalCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Required")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Must be a number")]
+        [StringLength(maximumLength:12,MinimumLength =12,ErrorMessage ="Must be 12 digits")]
         public string PhoneNumber { get; set; }
 
         [Required]
