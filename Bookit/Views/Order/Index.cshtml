@@ -1,23 +1,19 @@
 ﻿@model IEnumerable<Bookit.Models.Order>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Orders";
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.PostalCode)
             </th>
@@ -45,9 +41,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.PostalCode)
             </td>

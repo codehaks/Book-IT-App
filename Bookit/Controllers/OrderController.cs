@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bookit.Data;
 using Bookit.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Bookit.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -44,6 +46,7 @@ namespace Bookit.Controllers
         }
 
         // GET: Order/Create
+        [AllowAnonymous]
         public IActionResult Create(int bookId)
         {
             var book = _context.Books.Find(bookId);
@@ -64,6 +67,7 @@ namespace Bookit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([Bind("Id,FullName,Address,PostalCode,PhoneNumber,BookId,Price,State,TimeCreated")] Order order)
         {
             if (ModelState.IsValid)
