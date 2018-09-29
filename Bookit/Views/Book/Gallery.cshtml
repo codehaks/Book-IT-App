@@ -9,21 +9,6 @@
 
 @foreach (var book in Model)
 {
-    <div class="row">
-        <div class="col-sm-2">
-            <img src="@book.ImagePath" alt="@book.ImagePath" class="img-responsive" />
-        </div>
-        <div class="col-sm-10">
-            <h4>@book.Name</h4>
-            <p>Author : @book.Author</p>
-            <p>Year : @book.Year</p>
-            <p>Pages : @book.Pages</p>
-            <p>Price : @book.Price</p>
-            <p>
-                <a asp-action="more" asp-route-id="@book.Id" asp-controller="book" asp-area="" class="btn btn-primary">More...</a>
-                <a asp-action="create" asp-route-bookid="@book.Id" asp-controller="order" asp-area="" class="btn btn-success" style="width:200px"> Order now</a>
-            </p>
-        </div>
-    </div>
+    <partial name="_BookItem" model="book" />
     <hr />
 }
