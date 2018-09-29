@@ -11,7 +11,7 @@
         <p>Pages : @Model.Pages</p>
         <p>Price : @Model.Price</p>
         <p>
-            <a asp-action="more" asp-route-id="@Model.Id" asp-controller="Model" asp-area="" class="btn btn-primary">More...</a>
+            <a asp-action="more" asp-route-id="@Model.Id" asp-controller="Book" asp-area="" class="btn btn-primary">More...</a>
             <a asp-action="create" asp-route-bookid="@Model.Id" asp-controller="order" asp-area="" class="btn btn-success" style="width:200px"> Order now</a>
         </p>
     </div>
