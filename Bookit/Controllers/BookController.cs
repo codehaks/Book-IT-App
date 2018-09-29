@@ -25,9 +25,20 @@ namespace Bookit.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Gallery()
+        [Route("book/gallery/{term?}")]
+        public IActionResult Gallery(string term="")
         {
-            var model = _db.Books;
+            IEnumerable<Book> model;
+
+            if (string.IsNullOrEmpty(term))
+            {
+                model = _db.Books;
+            }
+            else
+            {
+                model = _db.Books.Where(b => b.Name.Contains(term));
+            }
+            ViewData["term"] = term;
             return View(model);
         }
 
