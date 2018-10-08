@@ -60,6 +60,7 @@ namespace Bookit.Controllers
         {
             _db.Books.Add(model);
             _db.SaveChanges();
+            TempData["message"] = "New book '" + model.Name + "' added.";
             return RedirectToAction(nameof(Index));
         }
 
