@@ -30,7 +30,8 @@ namespace Bookit
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlite("Data Source=app.db"));
+                options.UseSqlite("Data Source=app.db"));
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
             services.AddIdentity<IdentityUser, IdentityRole>()
