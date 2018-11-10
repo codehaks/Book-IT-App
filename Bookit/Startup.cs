@@ -58,8 +58,16 @@ namespace Bookit
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "aboutroute",
+                    defaults: new { controller = "home", action = "about" },
+                    template: "/about");
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                // /about
+
+                
             });
         }
     }

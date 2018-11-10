@@ -25,10 +25,17 @@ namespace Bookit.Controllers
         }
 
         [AllowAnonymous]
+        [Route("book/gallery/{year:int:min(2015)}")]
         [Route("book/gallery/{term?}")]
-        public IActionResult Gallery(string term="")
+        public IActionResult Gallery(string term="",int? year=null)
         {
             IEnumerable<Book> model;
+
+            if (year.HasValue)
+            {
+                model = _db.Books.Where(b => b.Year==year);
+                return View(model);
+            }
 
             if (string.IsNullOrEmpty(term))
             {
