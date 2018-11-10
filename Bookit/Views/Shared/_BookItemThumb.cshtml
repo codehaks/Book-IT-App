@@ -4,7 +4,7 @@
 <div class="col-sm-3">
     <img src="@Model.ImagePath" alt="@Model.ImagePath" class="img-responsive" />
     <p>
-        <a asp-action="more" asp-route-id="@Model.Id" asp-controller="Book" asp-area="" class="btn btn-primary">More...</a>
+        <a asp-action="more" asp-route-id="@Model.Id" asp-route-name="@Model.Name" asp-controller="Book" asp-area="" class="btn btn-primary">More...</a>
 
     </p>
 </div>
