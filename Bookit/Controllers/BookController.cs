@@ -50,7 +50,7 @@ namespace Bookit.Controllers
         }
 
         [AllowAnonymous]
-        [Route("book/info/{id:int:min(1)}/{name}")]
+        [Route("book/info/{id:int:min(1)}/{*name}")]
         public IActionResult More(int id)
         {
             var model = _db.Books.Find(id);
