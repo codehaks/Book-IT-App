@@ -1,4 +1,5 @@
-﻿using Bookit.Data;
+﻿using Bookit.Common;
+using Bookit.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,7 +34,13 @@ namespace Bookit
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
+
+            services.AddMvc(options =>
+            {
+                options.ModelBinderProviders.Insert(0, new BookBinderProvider());
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

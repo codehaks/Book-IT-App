@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bookit.Common;
 using Bookit.Data;
 using Bookit.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -9,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bookit.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public class BookController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -51,9 +52,9 @@ namespace Bookit.Controllers
 
         [AllowAnonymous]
         [Route("book/info/{id:int:min(1)}/{*name}")]
-        public IActionResult More(int id)
+        public IActionResult More([ModelBinder(binderType: typeof(BookBinder), Name = "id")]Book model)
         {
-            var model = _db.Books.Find(id);
+            //var model = _db.Books.Find(id);
             return View(model);
         }
 
