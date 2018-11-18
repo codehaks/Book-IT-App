@@ -19,7 +19,9 @@ namespace Bookit.Common
 
             if (context.Metadata.ModelType == typeof(Book))
             {
-                return new BinderTypeModelBinder(typeof(BookBinder));
+                var binder= new BinderTypeModelBinder(typeof(BookBinder));
+
+                return binder;
             }
 
             return null;

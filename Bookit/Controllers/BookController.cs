@@ -51,11 +51,11 @@ namespace Bookit.Controllers
         }
 
         [AllowAnonymous]
-        [Route("book/info/{id:int:min(1)}/{*name}")]
-        public IActionResult More([ModelBinder(binderType: typeof(BookBinder), Name = "id")]Book model)
+        [HttpGet("book/info/{bookId}")]
+        public IActionResult More([ModelBinder(Name = "id")]Book book)
         {
             //var model = _db.Books.Find(id);
-            return View(model);
+            return View(book);
         }
 
         [HttpGet]
