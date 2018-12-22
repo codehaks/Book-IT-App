@@ -52,10 +52,10 @@ namespace Bookit.Controllers
 
         [AllowAnonymous]
         [HttpGet("book/info/{bookId}")]
-        public IActionResult More([ModelBinder(Name = "id")]Book book)
+        public IActionResult More(int bookId)
         {
-            //var model = _db.Books.Find(id);
-            return View(book);
+            var model = _db.Books.Find(bookId);
+            return View(model);
         }
 
         [HttpGet]
