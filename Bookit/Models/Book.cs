@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,5 +19,8 @@ namespace Bookit.Models
         public int Year { get; set; }
         public int Pages { get; set; }
         public string ImagePath { get; set; }
+
+        [NotMapped]
+        public int Count { get; set; }
     }
 }
