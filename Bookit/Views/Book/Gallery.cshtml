@@ -7,7 +7,7 @@
 <h2>Book Gallery</h2>
 
 <form method="get" class="form-inline">
-    <input name="term" value="@ViewData["term"]" class="form-control" style="width:300px"/>
+    <input name="term" value="@ViewData[" term"]" class="form-control" style="width:300px" />
     <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
@@ -17,4 +17,32 @@
 {
     <partial name="_BookItem" model="book" />
     <hr />
+}
+
+@section scripts{
+    <script>
+        let basket = {
+            books: []
+        }
+
+        $(".addToBasket").click(function () {
+            var book = $(this).attr("data-book");
+            addToBasket(JSON.parse(book));
+            
+        });
+        function addToBasket(book) {
+
+            if (localStorage && localStorage.getItem('basket')) {
+                basket = JSON.parse(localStorage.getItem('basket'));
+
+                basket.books.push(book);
+
+                localStorage.setItem('basket', JSON.stringify(basket));
+            } else {
+                
+                basket.books.push(book);
+                localStorage.setItem('basket', JSON.stringify(basket));
+            }
+        }
+    </script>
 }

@@ -25,6 +25,11 @@ namespace Bookit.Controllers
             return View(model);
         }
 
+        public IActionResult Basket()
+        {
+            return View();
+        }
+
         [AllowAnonymous]
         [Route("book/gallery/{year:int:min(2015)}")]
         [Route("book/gallery/{term?}")]
