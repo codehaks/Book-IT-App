@@ -68,8 +68,8 @@
 
                 $.ajax({
                     url: "/order/basket",
-                    //dataType : 'json',
-                    contentType: "application/json",
+                    dataType : 'json',
+                    //contentType: "application/json",
                     data: { "books": JSON.stringify(vm.books) },
                     method: "POST"
                 })
