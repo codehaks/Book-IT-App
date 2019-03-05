@@ -37,59 +37,57 @@
 </div>
 
 @section scripts{
-    <script src="~/lib/vue/vue.js"></script>
+<script src="~/lib/vue/vue.js"></script>
 
+<script>
 
-    <script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            books: [],
 
-        var app = new Vue({
-            el: "#app",
-            data: {
-                books: [],
-
-            },
-            mounted: function () {
-                this.getBooks();
-            },
-            computed: {
-                total: function () {
-                    var result = 0;
-                    for (var i = 0; i < this.books.length; i++) {
-                        result += this.books[i].Price * this.books[i].Count;
-                    }
-                    return result;
+        },
+        mounted: function () {
+            this.getBooks();
+        },
+        computed: {
+            total: function () {
+                var result = 0;
+                for (var i = 0; i < this.books.length; i++) {
+                    result += this.books[i].Price * this.books[i].Count;
                 }
-            },
-            methods: {
-                sendOrder: function () {
-                    //alert("Ordering!");
-                    var vm = this;
-
-                    console.log(vm.books);
-
-                    $.ajax({
-                        url: "/order/basket",
-                        //dataType : 'json',
-                        contentType: "application/json",
-                        data: JSON.stringify(vm.books),
-                        method: "POST"
-                    })
-                        .done(function (data) {
-                            console.log("Success")
-                        }).fail(function () {
-                            console.log("fail")
-                        }).always(function () {
-                            console.log("End")
-                        });
-
-                },
-                getBooks: function () {
-                    var basketData = localStorage.getItem('basket');
-                    var basket = JSON.parse(basketData);
-                    this.books = basket.books;
-                }
+                return result;
             }
-        });
-    </script>
-}
+        },
+        methods: {
+            sendOrder: function () {
+                //alert("Ordering!");
+                var vm = this;
 
+                console.log(vm.books);
+
+                $.ajax({
+                    url: "/order/basket",
+                    //dataType : 'json',
+                    contentType: "application/json",
+                    data: { "books": JSON.stringify(vm.books) },
+                    method: "POST"
+                })
+                    .done(function (data) {
+                        console.log("Success")
+                    }).fail(function () {
+                        console.log("fail")
+                    }).always(function () {
+                        console.log("End")
+                    });
+
+            },
+            getBooks: function () {
+                var basketData = localStorage.getItem('basket');
+                var basket = JSON.parse(basketData);
+                this.books = basket.books;
+            }
+        }
+    });
+</script>
+}

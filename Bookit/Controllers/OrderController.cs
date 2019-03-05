@@ -29,7 +29,7 @@ namespace Bookit.Controllers
 
         [Route("order/basket")]
         [AllowAnonymous]
-        public IActionResult OrderBasket(string data)
+        public IActionResult OrderBasket(string books)
         {
             var body = HttpContext.Request.Body;
             // Save to database -> Order
