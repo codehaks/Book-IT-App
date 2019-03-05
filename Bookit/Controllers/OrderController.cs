@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Bookit.Data;
 using Bookit.Models;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace Bookit.Controllers
 {
@@ -31,9 +32,7 @@ namespace Bookit.Controllers
         [AllowAnonymous]
         public IActionResult OrderBasket(string books)
         {
-            var body = HttpContext.Request.Body;
-            // Save to database -> Order
-
+            var list = JsonConvert.DeserializeObject<IList<BookViewModel>>(books);
             return Ok();
         }
 
