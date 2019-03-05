@@ -27,6 +27,16 @@ namespace Bookit.Controllers
             return View(await _context.Orders.ToListAsync());
         }
 
+        [Route("order/basket")]
+        [AllowAnonymous]
+        public IActionResult OrderBasket(string data)
+        {
+            var body = HttpContext.Request.Body;
+            // Save to database -> Order
+
+            return Ok();
+        }
+
         // GET: Order/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bookit.Models.Book>
+﻿@model IEnumerable<Bookit.Models.BookViewModel>
 
 @{
     ViewData["Title"] = "Gallery";
@@ -15,7 +15,7 @@
 
 @foreach (var book in Model)
 {
-    <partial name="_BookItem" model="book" />
+    <partial name="_BookItemVM" model="book" />
     <hr />
 }
 
@@ -29,7 +29,6 @@
             var book = $(this).attr("data-book");
 
             addToBasket(JSON.parse(book));
-
 
         });
         function addToBasket(book) {

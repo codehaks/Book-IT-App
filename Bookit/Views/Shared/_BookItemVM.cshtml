@@ -1,5 +1,5 @@
 ﻿@using Bookit.Common
-@model Bookit.Models.Book
+@model Bookit.Models.BookViewModel
 
 <div class="row">
     <div class="col-sm-2">
@@ -7,9 +7,7 @@
     </div>
     <div class="col-sm-10">
         <h4>@Model.Name</h4>
-        <p>Author : @Model.Author</p>
-        <p>Year : @Model.Year</p>
-        <p>Pages : @Model.Pages</p>
+
         <p>Price : @Model.Price</p>
         <p>
             <a asp-action="more" asp-route-id="@Model.Id" asp-controller="Book" asp-area="" class="btn btn-primary">More...</a>

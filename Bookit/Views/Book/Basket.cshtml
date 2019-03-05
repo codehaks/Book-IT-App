@@ -32,37 +32,64 @@
             </tr>
         </tbody>
     </table>
+
+    <button v-on:click="sendOrder" class="btn btn-primary btn-lg">Order now</button>
 </div>
 
 @section scripts{
-<script src="~/lib/vue/vue.js"></script>
-<script>
-    var app = new Vue({
-        el: "#app",
-        data: {
-            books: [],
+    <script src="~/lib/vue/vue.js"></script>
 
-        },
-        mounted: function () {
-            this.getBooks();
-        },
-        computed: {
-            total: function () {
-                var result = 0;
-                for (var i = 0; i < this.books.length; i++) {
-                    result += this.books[i].Price * this.books[i].Count;
+
+    <script>
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                books: [],
+
+            },
+            mounted: function () {
+                this.getBooks();
+            },
+            computed: {
+                total: function () {
+                    var result = 0;
+                    for (var i = 0; i < this.books.length; i++) {
+                        result += this.books[i].Price * this.books[i].Count;
+                    }
+                    return result;
                 }
-                return result;
+            },
+            methods: {
+                sendOrder: function () {
+                    //alert("Ordering!");
+                    var vm = this;
+
+                    console.log(vm.books);
+
+                    $.ajax({
+                        url: "/order/basket",
+                        //dataType : 'json',
+                        contentType: "application/json",
+                        data: JSON.stringify(vm.books),
+                        method: "POST"
+                    })
+                        .done(function (data) {
+                            console.log("Success")
+                        }).fail(function () {
+                            console.log("fail")
+                        }).always(function () {
+                            console.log("End")
+                        });
+
+                },
+                getBooks: function () {
+                    var basketData = localStorage.getItem('basket');
+                    var basket = JSON.parse(basketData);
+                    this.books = basket.books;
+                }
             }
-        },
-        methods: {
-            getBooks: function () {
-                var basketData = localStorage.getItem('basket');
-                var basket = JSON.parse(basketData);
-                this.books = basket.books;
-            }
-        }
-    });
-</script>
+        });
+    </script>
 }
 

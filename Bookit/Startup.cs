@@ -38,7 +38,7 @@ namespace Bookit
 
             services.AddMvc(options =>
             {
-                options.ModelBinderProviders.Insert(0, new BookBinderProvider());
+              //  options.ModelBinderProviders.Insert(0, new BookBinderProvider());
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -53,7 +53,7 @@ namespace Bookit
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                //app.UseHsts();
             }
 
             app.UseHttpsRedirection();

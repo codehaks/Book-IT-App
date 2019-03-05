@@ -52,7 +52,7 @@ namespace Bookit.Controllers
                 model = _db.Books.Where(b => b.Name.Contains(term));
             }
             ViewData["term"] = term;
-            return View(model);
+            return View(model.Select(m=>new BookViewModel { Count=0,ImagePath=m.ImagePath,Id=m.Id,Name=m.Name,Price=m.Price}));
         }
 
         [AllowAnonymous]
