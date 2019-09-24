@@ -34,21 +34,20 @@ namespace Bookit
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            
+
 
             services.AddMvc(options =>
             {
                 options.ModelBinderProviders.Insert(0, new BookBinderProvider());
-            })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            });
+            
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.EnvironmentName=="Development")
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -62,20 +61,15 @@ namespace Bookit
 
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "aboutroute",
-                    defaults: new { controller = "home", action = "about" },
-                    template: "/about");
-
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-                // /about
-
-                
+                endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
             });
+
+            
         }
     }
 }
