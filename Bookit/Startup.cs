@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Bookit
 {
@@ -34,7 +35,12 @@ namespace Bookit
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            
+            services.AddLogging(options =>
+            {
+                options.AddFilter("Microsoft", LogLevel.Critical);
+            });
+
+
 
             services.AddMvc(options =>
             {
