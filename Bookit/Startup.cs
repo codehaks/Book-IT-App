@@ -37,7 +37,7 @@ namespace Bookit
 
             services.AddLogging(options =>
             {
-                options.AddFilter("Microsoft", LogLevel.Critical);
+                options.AddFilter("Microsoft", LogLevel.Warning);
             });
 
 

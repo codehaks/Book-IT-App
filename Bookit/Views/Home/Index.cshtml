@@ -7,4 +7,7 @@
 
 <h2>Book Gallery</h2>
 <hr />
-@await Component.InvokeAsync("BookList")
+
+<cache expires-after="@TimeSpan.FromSeconds(10)" expires->
+    @await Component.InvokeAsync("BookList")
+</cache>

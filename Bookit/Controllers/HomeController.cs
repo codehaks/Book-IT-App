@@ -12,6 +12,7 @@ namespace Bookit.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["time"] = DateTime.Now.ToString("hh:mm:ss");
             return View();
         }
 
